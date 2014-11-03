@@ -1,0 +1,51 @@
+/*
+
+DKB Raytracer for OS/2 2.0 Presentation Manager
+by Michael Caldwell (mcaldwel@netcom.com)
+
+*/
+
+
+#include <os2.h>
+#include "tracepm.h"
+
+
+ICON ID_MAIN "tracepm.ico"
+
+MENU ID_MAIN PRELOAD
+BEGIN
+	SUBMENU "~File",					ID_FILE
+	BEGIN
+		MENUITEM "~Trace...",		ID_TRACE
+		MENUITEM "~Abort Trace",	ID_ABORT
+		MENUITEM SEPARATOR
+		MENUITEM "E~xit",				ID_EXIT
+	END
+	SUBMENU "~Display",				ID_DISPLAY
+	BEGIN
+		MENUITEM "~Image",			ID_IMAGE
+		MENUITEM "~Statistics",		ID_STATISTICS
+	END
+	SUBMENU "~Output",				ID_OUTPUT
+	BEGIN
+		MENUITEM "~Targa",			ID_TARGA
+		MENUITEM "~Dump",				ID_DUMP
+		MENUITEM "~Raw",				ID_RAW
+	END
+	SUBMENU "~Quality",				ID_QUALITY
+	BEGIN
+		MENUITEM "~0",					ID_0
+		MENUITEM "~1",					ID_1
+		MENUITEM "~2",					ID_2
+		MENUITEM "~3",					ID_3
+		MENUITEM "~4",					ID_4
+		MENUITEM "~5",					ID_5
+		MENUITEM "~6",					ID_6
+		MENUITEM "~7",					ID_7
+		MENUITEM "~8",					ID_8
+		MENUITEM "~9",					ID_9
+	END
+END
+
+rcinclude trace.dlg
+rcinclude stats.dlg

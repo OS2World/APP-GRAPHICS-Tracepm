@@ -1,0 +1,54 @@
+#
+# DKB Raytracer for OS/2 2.0 Presentation Manager
+# by Michael Caldwell (mcaldwel@netcom.com)
+#
+# This file is released to the public domain.
+#
+# Just enter nmake and press return
+#
+
+CC = icc
+# don't use /O it causes all sorts of problems
+CFLAGS = /Q /Ti
+LINKER = link386 /BATCH
+
+OBJS = tracepm.obj pm.obj trace.obj render.obj tokenize.obj parse.obj \
+		objects.obj spheres.obj quadrics.obj lighting.obj prioq.obj texture.obj \
+		matrices.obj csg.obj colour.obj viewpnt.obj ray.obj planes.obj iff.obj \
+		gif.obj gifdecod.obj triangle.obj raw.obj dump.obj targa.obj \
+		quartics.obj vect.obj
+
+DIALOGS = trace.dlg stats.dlg
+
+tracepm.exe: $(OBJS) tracepm.lnk tracepm.def tracepm.res
+	$(LINKER) @tracepm.lnk
+	rc tracepm.res $@
+
+tracepm.res:	tracepm.rc tracepm.h trace.h stats.h $(DIALOGS) tracepm.ico
+tracepm.obj:	tracepm.c tracepm.h trace.h
+pm.obj:			pm.c stats.h
+trace.obj:		trace.c dkbproto.h frame.h vector.h config.h
+tokenize.obj:	tokenize.c dkbproto.h frame.h config.h
+parse.obj:		parse.c dkbproto.h frame.h config.h
+render.obj:		render.c dkbproto.h frame.h vector.h config.h
+lighting.obj:	lighting.c dkbproto.h frame.h vector.h config.h
+prioq.obj:		prioq.c dkbproto.h frame.h config.h
+texture.obj:	texture.c dkbproto.h frame.h vector.h config.h
+objects.obj:	objects.c dkbproto.h frame.h vector.h config.h
+spheres.obj:	spheres.c dkbproto.h frame.h vector.h config.h
+planes.obj:		planes.c dkbproto.h frame.h vector.h config.h
+quadrics.obj:	quadrics.c dkbproto.h frame.h vector.h config.h
+quartics.obj:	quartics.c dkbproto.h frame.h vector.h config.h
+vect.obj:		vect.c dkbproto.h frame.h config.h
+matrices.obj:	matrices.c dkbproto.h frame.h vector.h config.h
+csg.obj:			csg.c dkbproto.h frame.h vector.h config.h
+colour.obj:		colour.c dkbproto.h frame.h config.h
+viewpnt.obj:	viewpnt.c dkbproto.h frame.h vector.h config.h
+ray.obj:			ray.c dkbproto.h frame.h vector.h config.h
+iff.obj:			iff.c dkbproto.h frame.h config.h
+gif.obj:			gif.c dkbproto.h frame.h config.h
+gifdecod.obj:	gifdecod.c dkbproto.h frame.h config.h
+raw.obj:			raw.c dkbproto.h frame.h config.h
+dump.obj:		dump.c dkbproto.h frame.h config.h
+targa.obj:		targa.c dkbproto.h frame.h config.h
+triangle.obj:	triangle.c dkbproto.h frame.h vector.h config.h

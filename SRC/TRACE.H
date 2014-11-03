@@ -1,0 +1,9 @@
+#define ID_TRACEDIALOG              100
+#define ID_IFILENAME                105
+#define ID_OFILENAME						106
+#define ID_WIDTH                    107
+#define ID_HEIGHT                   108
+#define ID_ANTIALIAS                109
+#define ID_THRESHOLD                100
+#define ID_OK                       111
+#define ID_CANCEL                   112
